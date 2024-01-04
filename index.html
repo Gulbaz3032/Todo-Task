@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Text Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1></h1>
+    <input type="text" id="userInput" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Check Guess</button>
+    <p></p>
+
+    <script>
+        var randomText = generateRandomText(); 
+        document.querySelector('h1').innerHTML = randomText;
+
+        function generateRandomText() {
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz1234567890";
+            var randomText = "";
+
+            for (var i = 0; i < 8; i++) {
+                randomText += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            return randomText;
+        }
+
+        function checkGuess() {
+            var input = document.getElementById('userInput').value;
+
+            if (randomText === input) {
+                document.querySelector('p').innerHTML = "Wow! Your guess is correct";
+                document.getElementById('userInput').value = "";
+            } else {
+                document.querySelector('p').innerHTML = "Sorry! Your guess is incorrect";
+            }
+        }
+    </script>
+
+</body>
+</html>
